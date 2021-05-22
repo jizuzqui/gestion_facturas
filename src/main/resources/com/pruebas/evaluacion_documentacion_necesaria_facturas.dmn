@@ -1,0 +1,251 @@
+<dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="facturas_decisions" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="_B31E0781-1F63-4856-9777-8126D251CB89" name="Evaluar necesidad documentación adicional facturas" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="facturas_decisions">
+  <dmn:extensionElements/>
+  <dmn:itemDefinition id="_6FBC9008-A0DC-49A1-B8DF-B9045F964FDE" name="Documentos" isCollection="true">
+    <dmn:typeRef>string</dmn:typeRef>
+  </dmn:itemDefinition>
+  <dmn:inputData id="_4750F962-AD4E-4929-A59A-7C5F2A385A7B" name="Tipo Factura">
+    <dmn:extensionElements/>
+    <dmn:variable id="_768B26AB-F936-4C5B-A5D2-1736D5663CC0" name="Tipo Factura" typeRef="string"/>
+  </dmn:inputData>
+  <dmn:inputData id="_48BC2F35-FA0B-4389-9D22-74064FA8B6B8" name="Es Proforma">
+    <dmn:extensionElements/>
+    <dmn:variable id="_D47B2C9F-4E62-4B0E-AE5D-4DAC2B00FC70" name="Es Proforma" typeRef="boolean"/>
+  </dmn:inputData>
+  <dmn:decision id="_788C4EDC-325E-4066-863B-9CFE87689939" name="Evaluar necesidad documentación adicional">
+    <dmn:extensionElements/>
+    <dmn:allowedAnswers>"NINGUNO", "ALBARÁN", "PROFORMA"</dmn:allowedAnswers>
+    <dmn:variable id="_22C1F419-7C60-43E6-AC8A-33C27E77CABD" name="Evaluar necesidad documentación adicional" typeRef="Documentos"/>
+    <dmn:informationRequirement id="_357C2CC0-3525-45E3-A048-7AFE7CE89DBB">
+      <dmn:requiredInput href="#_4750F962-AD4E-4929-A59A-7C5F2A385A7B"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_87D1F98D-9C0B-4815-A452-4B2B66CE37B9">
+      <dmn:requiredInput href="#_48BC2F35-FA0B-4389-9D22-74064FA8B6B8"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_F9D19FEB-2913-4CFE-9A8B-1FC559FC8246">
+      <dmn:requiredInput href="#_51CB6FB4-BAB9-491D-A915-280969313033"/>
+    </dmn:informationRequirement>
+    <dmn:decisionTable id="_9EDEB266-B571-461B-A35F-DE714C149CD0" hitPolicy="COLLECT" preferredOrientation="Rule-as-Row">
+      <dmn:input id="_A0A9DE23-FC64-422F-BDE8-BC2B0C5578C5">
+        <dmn:inputExpression id="_FAEA9FBB-5E57-422B-9F43-085E112E9B0E" typeRef="string">
+          <dmn:text>Tipo Factura</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_4DAD572C-DB86-4935-92C7-1B6D6CDF1F41">
+        <dmn:inputExpression id="_4ED34460-C12E-48F4-9A7C-C47EC80B58EA" typeRef="boolean">
+          <dmn:text>Presenta Albarán</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:input id="_E858BC64-C570-4246-A80D-B9EECA21777E">
+        <dmn:inputExpression id="_121F6D04-9950-4F56-A9A4-FFDBA6B878A9" typeRef="boolean">
+          <dmn:text>Es Proforma</dmn:text>
+        </dmn:inputExpression>
+      </dmn:input>
+      <dmn:output id="_B303BCC8-F690-4C92-8991-08142929F3AD"/>
+      <dmn:annotation name="annotation-1"/>
+      <dmn:rule id="_38EC2663-6D8F-43BF-A501-D0D27DD5BFF8">
+        <dmn:inputEntry id="_83B91B2A-01D1-4B9C-8D98-33FF9005D432">
+          <dmn:text>"DIRECTA"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_CD659E18-74EF-491A-B6D8-34480E9A0A06">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_ADD4A05F-9497-4164-AB05-C3ECBF8FE589">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_228B0024-2B52-48C1-B3F7-11BEA2040037">
+          <dmn:text>"NINGUNA"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_1220937C-5830-4126-AF51-AE7C408D470E">
+        <dmn:inputEntry id="_38B493F2-2475-4BA8-A596-ED671CF49DF6">
+          <dmn:text>"OBRA"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_0455D68A-38B6-49F6-9CC9-C1D5D8302B15">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_FCE6D017-1383-4A0E-8C8C-EBD57FB2F925">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_A909D07A-41CF-4530-B273-5F0FB131A40A">
+          <dmn:text>"NINGUNA"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_BA07F7D7-2877-44AB-B353-91829BF6AEDB">
+        <dmn:inputEntry id="_4FFF8E45-A141-4998-8926-B70F92B09F8F">
+          <dmn:text>"OBRA"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_E7C2724A-BE4A-4E02-BB29-65530B3530E0">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_FAE7E66D-8C78-4E55-8F79-7F363945739A">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_CEC80456-3DFE-4947-B1CB-716391F91ACF">
+          <dmn:text>"ALBARÁN"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_5BB04590-2394-48D5-9820-3396CD337408">
+        <dmn:inputEntry id="_54EB789B-CDA7-42B6-B809-23D14508EDAB">
+          <dmn:text>"OBRA"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_D432FE26-489C-4713-8522-62D97ABAF784">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_D173EB7D-27F9-4AAB-8912-D50F6CA5709D">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_DE491F54-6A4D-4C88-BB0D-46440DA1007E">
+          <dmn:text>"PROFORMA"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_8916C1DA-F8EF-4D2A-B751-983E70A1D059">
+        <dmn:inputEntry id="_A8B0FDBF-00E4-4C98-806E-FD22632DF6DA">
+          <dmn:text>"OBRA"</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_832CD001-C084-4340-8C02-F4980B13E3E5">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_1BBA48B3-438B-4852-8D85-0E9BAB090E79">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_A5A229CB-F2BD-4776-AC2C-85762D67A95C">
+          <dmn:text>"PROFORMA"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_24810104-0789-46E8-9803-47D80121B573">
+        <dmn:inputEntry id="_5D7576A4-6B9B-4CD2-A9BB-C632A3D0EA50">
+          <dmn:text>NOT("OBRA","DIRECTA")</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_AA896FC5-AD5A-4F2A-9702-F7C29CB257C3">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_A357FC54-9C60-47FD-81F9-BEC5F06E7475">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_7DCB2DEC-EDBD-476E-A798-9B05072359E5">
+          <dmn:text>"NINGUNA"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_D59BB463-9E0E-4099-903A-ED06E8B59E3C">
+        <dmn:inputEntry id="_BF2D8B2A-D787-46BF-85F9-281F9D62740F">
+          <dmn:text>NOT("OBRA","DIRECTA")</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_5804FDE3-1EA4-427C-941D-3123C366DA01">
+          <dmn:text>true</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_D36F4E97-A550-4CD6-A6D2-B37ED61451E5">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_754EDBF0-E20C-4D79-8341-6A61A28B90F3">
+          <dmn:text>"PROFORMA"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+      <dmn:rule id="_9BCC6B3D-2890-450F-9521-2E8DEA360AA9">
+        <dmn:inputEntry id="_B485B8E1-BC2C-44ED-A037-8ACF2C065614">
+          <dmn:text>NOT("OBRA","DIRECTA")</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_E46B5A01-4B10-47FB-A100-B20F64707A8D">
+          <dmn:text>false</dmn:text>
+        </dmn:inputEntry>
+        <dmn:inputEntry id="_30751808-5D28-4265-9A47-8C52408E2E57">
+          <dmn:text>-</dmn:text>
+        </dmn:inputEntry>
+        <dmn:outputEntry id="_2669F6CF-9EEF-4496-8A27-64D5106CCC92">
+          <dmn:text>"ALBARÁN"</dmn:text>
+        </dmn:outputEntry>
+        <dmn:annotationEntry>
+          <dmn:text/>
+        </dmn:annotationEntry>
+      </dmn:rule>
+    </dmn:decisionTable>
+  </dmn:decision>
+  <dmn:inputData id="_51CB6FB4-BAB9-491D-A915-280969313033" name="Presenta Albarán">
+    <dmn:extensionElements/>
+    <dmn:variable id="_CA33C860-BF01-4066-922B-15547E92A4FE" name="Presenta Albarán" typeRef="boolean"/>
+  </dmn:inputData>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram id="_77459B3E-01A6-4F22-AD97-4530F30203DD" name="DRG">
+      <di:extension>
+        <kie:ComponentsWidthsExtension>
+          <kie:ComponentWidths dmnElementRef="_9EDEB266-B571-461B-A35F-DE714C149CD0">
+            <kie:width>50</kie:width>
+            <kie:width>198</kie:width>
+            <kie:width>148</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>345</kie:width>
+            <kie:width>100</kie:width>
+          </kie:ComponentWidths>
+        </kie:ComponentsWidthsExtension>
+      </di:extension>
+      <dmndi:DMNShape xmlns:p0="https://kiegroup.org/dmn/_5D0E8739-53CE-4C4D-A45D-1783AFA7EC4D" id="dmnshape-drg-_4750F962-AD4E-4929-A59A-7C5F2A385A7B" dmnElementRef="p0:_4750F962-AD4E-4929-A59A-7C5F2A385A7B" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="371" y="347" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape xmlns:p1="https://kiegroup.org/dmn/_5D0E8739-53CE-4C4D-A45D-1783AFA7EC4D" id="dmnshape-drg-_48BC2F35-FA0B-4389-9D22-74064FA8B6B8" dmnElementRef="p1:_48BC2F35-FA0B-4389-9D22-74064FA8B6B8" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="544" y="347" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape xmlns:p2="https://kiegroup.org/dmn/_5D0E8739-53CE-4C4D-A45D-1783AFA7EC4D" id="dmnshape-drg-_788C4EDC-325E-4066-863B-9CFE87689939" dmnElementRef="p2:_788C4EDC-325E-4066-863B-9CFE87689939" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="512" y="154" width="166" height="86"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNShape xmlns:p3="https://kiegroup.org/dmn/_5D0E8739-53CE-4C4D-A45D-1783AFA7EC4D" id="dmnshape-drg-_51CB6FB4-BAB9-491D-A915-280969313033" dmnElementRef="p3:_51CB6FB4-BAB9-491D-A915-280969313033" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="754" y="347" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge xmlns:p4="https://kiegroup.org/dmn/_5D0E8739-53CE-4C4D-A45D-1783AFA7EC4D" id="dmnedge-drg-_357C2CC0-3525-45E3-A048-7AFE7CE89DBB-AUTO-SOURCE-AUTO-TARGET" dmnElementRef="p4:_357C2CC0-3525-45E3-A048-7AFE7CE89DBB">
+        <di:waypoint x="471" y="372"/>
+        <di:waypoint x="512" y="197"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge xmlns:p5="https://kiegroup.org/dmn/_5D0E8739-53CE-4C4D-A45D-1783AFA7EC4D" id="dmnedge-drg-_87D1F98D-9C0B-4815-A452-4B2B66CE37B9" dmnElementRef="p5:_87D1F98D-9C0B-4815-A452-4B2B66CE37B9">
+        <di:waypoint x="594" y="372"/>
+        <di:waypoint x="595" y="197"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge xmlns:p6="https://kiegroup.org/dmn/_5D0E8739-53CE-4C4D-A45D-1783AFA7EC4D" id="dmnedge-drg-_F9D19FEB-2913-4CFE-9A8B-1FC559FC8246-AUTO-TARGET" dmnElementRef="p6:_F9D19FEB-2913-4CFE-9A8B-1FC559FC8246">
+        <di:waypoint x="804" y="372"/>
+        <di:waypoint x="595" y="240"/>
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</dmn:definitions>
